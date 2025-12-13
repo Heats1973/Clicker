@@ -1,0 +1,128 @@
+#:import from_hex kivy.utils.get_color_from_hex
+#:import colormap kivy.utils.colormap
+
+#:set main_color "#F3AF12"
+#:set main_color_dark "#F37C12"
+
+# <Widget>:
+#    font_name: app.fonty
+
+<ButtonMenu@Button>:
+    font_size: "20sp"
+    font_name: app.fonty
+    size_hint: 1, 0.15
+    background_normal: ''
+    background_color: from_hex(main_color)
+    color: 0, 0, 0, 1
+
+    on_press:
+        self.background_color = from_hex(main_color_dark)
+    on_release:
+        self.background_color = from_hex(main_color)
+
+<MenuScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+
+        canvas.before:
+            Color:
+                rgba: colormap['blue']
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Image:
+            source: app.imagy_main
+            size_hint: 1, 0.5
+
+        Label:
+            text: "Main Menu"
+            font_size: "40sp"
+            font_name: app.fonty
+            size_hint: 1, 0.2
+
+        ButtonMenu:
+            text: "PLAY"
+            on_press: root.go_game()
+
+        ButtonMenu:
+            text: "SETTINGS"
+            on_press: root.go_settings()
+
+        ButtonMenu:
+            text: "EXIT"
+            on_press: root.exit_app()
+
+<GameScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+        canvas.before:
+            Color:
+                rgba: colormap['brown']
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            id: click_label
+            text: "Clicks: 0"
+            font_size: "30sp"
+            font_name: app.fonty
+            size_hint_y: None
+            height: "60dp"
+
+        RelativeLayout:
+            size_hint: 1, 1
+
+            Fish:
+                id: fish
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size_hint: None, None
+                size: 400, 400
+                opacity: 1
+
+            Label:
+                id: game_complete
+                text: ""
+                opacity: 0
+                color: 0, 1, 0, 1
+                font_size: "40sp"
+                bold: True
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
+
+            Label:
+                id: level_complete
+                text: ""
+                opacity: 0
+                color: 0, 1, 0, 1
+                font_size: "40sp"
+                bold: True
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
+
+        ButtonMenu:
+            text: "Back to Menu"
+            on_press: root.go_menu()
+
+<SettingsScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+
+        Label:
+            text: "Settings"
+            font_name: app.fonty
+            font_size: "40sp"
+
+        ButtonMenu:
+            text: "Back to Menu"
+            on_press: root.go_menu()
+
+<Fish>:
+    center: root.center
+    size_hint: None, None
+    size: 200, 200
