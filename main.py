@@ -10,12 +10,6 @@ from kivy.properties import NumericProperty
 from kivy.clock import Clock
 import os
 
-fonty = r"C:/Logika/Third_course(Expert)/Third module(app development)/third lesson/assets/fonts/Lemon-Regular.ttf"
-imagy_main = r"C:/Logika/Third_course(Expert)/Third module(app development)/third lesson/assets/images/cool cat.jpg"
-imagy_car1 = r"C:/Logika/Third_course(Expert)/Third module(app development)/third lesson/assets/images/cat1.jpg"
-imagy_car2 = r"C:/Logika/Third_course(Expert)/Third module(app development)/third lesson/assets/images/cat2.jpg"
-imagy_car3 = r"C:/Logika/Third_course(Expert)/Third module(app development)/third lesson/assets/images/cat3.jpg"
-
 Window.size = (450, 900)
 
 Builder.load_file('clicker.kv')
@@ -162,19 +156,19 @@ class Fish(Image):
 
 class ClickerApp(App):
     LEVEL = 0
-    fonty = fonty
-    imagy_main = imagy_main
-    imagy_car1 = imagy_car1
-    imagy_car2 = imagy_car2
-    imagy_car3 = imagy_car3
+    fonty = "assets/fonts/Lemon-Regular.ttf"
+    imagy_main = "assets/images/cool cat.jpg"
+    imagy_car1 = "assets/images/cat1.jpg"
+    imagy_car2 = "assets/images/cat2.jpg"
+    imagy_car3 = "assets/images/cat3.jpg"
 
     FISHES = {
         'cat1':
-            {'source': r"C:/Logika/Third_course(Expert)/Third module(app development)/assets/images/cat1.jpg", 'hp': 10},
+            {'source': imagy_car1, 'hp': 10},
         'cat2':
-            {'source': r"C:/Logika/Third_course(Expert)/Third module(app development)/assets/images/cat2.jpg", 'hp': 20},
+            {'source': imagy_car2, 'hp': 20},
         'cat3':
-            {'source': r"C:/Logika/Third_course(Expert)/Third module(app development)/assets/images/cat3.jpg", 'hp' : 25}
+            {'source': imagy_car3, 'hp' : 25}
     }
 
     LEVELS = [
